@@ -1,0 +1,20 @@
+<!-- index.html.erb -->
+
+    <div>
+        <h2>Title: <%= @post.title %> </h2>
+        <p>
+        Author: <%= @post.author %><br/>
+        Description: <%=  @post.description %>
+        </p>
+    </div>
+
+	<div>
+	<h2>Comments</h2>
+	<% @comments.each do |comment| %>
+		</div>
+			<p>Description: <%= comment.description %></p>
+			<p>Name: <%= comment.name %> </p>
+		</div>
+	<% end %>
+	</div>
+

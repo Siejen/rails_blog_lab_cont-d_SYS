@@ -2,15 +2,24 @@ class PostsController < ApplicationController
   def index
     @all_posts = Post.all
   end
+
   def show
     @post = Post.find_by_id(params[:id])
     @tags = @post.tags
   end
+  
   def new
+    @post = Post.new
+    render :new
   end
+  
   def create
     post_data = params[:post].permit(:author, :title, :description)
-    tag_data = params[:tags].split(",").map(&:strip).map(&:downcase)
+    # p params
+    # p params[:tag]
+    tag_data = params[:tag].split(",")
+    # p tag_data
+    tag_data = tag_data.map(&:strip).map(&:downcase)
 
     post = Post.create(post_data)
     tag_data.each do |tag_str|
@@ -23,9 +32,11 @@ class PostsController < ApplicationController
 
     redirect_to "/"
   end
+  
   def edit
     @post = Post.find_by_id(params[:id])
   end
+  
   def update
     id_data = params[:id]
     post_data = params[:post].permit(:author, :title, :description)
@@ -44,11 +55,12 @@ class PostsController < ApplicationController
     end
     redirect_to "/posts/" + id_data
   end
-  def delete
-    post = Post.find_by_id(params[:id])
-    if post
-      post.destroy
-    end
-    redirect_to "/"
+  
+  def destroy
+    id = params[:id]
+    post = Post.find(id)
+    post.destroy
+    redirect_to "/posts"
   end
+
 end

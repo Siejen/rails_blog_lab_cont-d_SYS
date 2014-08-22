@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-offset-4 col-xs-4">
+      <h2>Title: <%= @post.title %></h2>
+      <p>
+        <%= @post.description %>
+      </p>
+    </div>
+  </div>
+ <div>
+  <%= form_for [@post, @comment] do |f| %>
+    Name: <%= f.text_field :name, class: "form-control" %><br>
+    Description <%= f.text_area :description, class: "form-control" %> <br>
+    <%= f.submit "Add Comment", class: "btn btn-primary"%>
+  <% end %>
+</div>
