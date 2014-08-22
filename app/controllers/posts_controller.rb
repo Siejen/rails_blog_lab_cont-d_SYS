@@ -5,6 +5,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by_id(params[:id])
+    # @tags = Categorization.where(:post_id => @post.id)
+    # p @tags
     @tags = @post.tags
   end
   

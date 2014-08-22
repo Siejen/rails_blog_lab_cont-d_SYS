@@ -1,3 +1,7 @@
+<%= stylesheet_link_tag "application" %>
+
+<%= image_tag "starwars_wallpaper_CRP.png" %>
+
 <h1>Posts</h1>
 
 <table>
@@ -5,12 +9,15 @@
     <th>Author</th>
     <th>Title</th>
     <th>Link</th>
+    <th>Submitted</th>
+
   </tr>
   <% @all_posts.each do |post| %>
   <tr>
     <td><%= post.author %></td>
     <td><%= post.title %></td>
     <td><a href="/posts/<%=post.id%>">Show</a>
+    <td><%= post.created_at %></td>
   </tr>
   <% end %>
 </table>

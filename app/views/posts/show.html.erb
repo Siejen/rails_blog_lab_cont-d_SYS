@@ -1,6 +1,9 @@
+
 <h1><%= @post.title %></h1>
 
 <p>Author: <%= @post.author %></p>
+
+<p><%= @post.description %></p>
 
 <% if @tags.length > 0 %>
 <p>Tags:
@@ -9,8 +12,6 @@
 <% end %>
 </p>
 <% end %>
-
-<p><%= @post.description %></p>
 
 <form method="GET" action="/posts/<%=@post.id%>/edit">
   <%= token_tag form_authenticity_token %>
@@ -21,3 +22,6 @@
   <%= token_tag form_authenticity_token %>
   <button>Delete</button>
 </form>
+<%= stylesheet_link_tag "application" %>
+
+<%= image_tag "starwars_wallpaper_CRP.png" %>

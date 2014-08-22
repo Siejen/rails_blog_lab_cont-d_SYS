@@ -1,3 +1,7 @@
+<%= stylesheet_link_tag "application" %>
+
+<%= image_tag "starwars_wallpaper_CRP.png" %>
+
 <form method="POST" action="/posts/<%=@post.id%>">
   <label for="author">Author</label>
   <input id="author" type="text" name="post[author]" value="<%=@post.author%>">
